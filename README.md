@@ -26,7 +26,7 @@ The goal is to impute STR (Short Tandem Repeats) data from SNP (Single Nucleotid
 │                         the creator's initials, and a short `-` delimited description, e.g.
 │                         `1.0-jqp-initial-data-exploration`.
 │
-├── pyproject.toml     <- Project configuration file with package metadata for 
+├── pyproject.toml     <- Project configuration file with package metadata for
 │                         ksitest and configuration for tools like black
 │
 ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
@@ -49,9 +49,9 @@ The goal is to impute STR (Short Tandem Repeats) data from SNP (Single Nucleotid
     │
     ├── features.py             <- Code to create features for modeling
     │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
+    ├── modeling
+    │   ├── __init__.py
+    │   ├── predict.py          <- Code to run model inference with trained models
     │   └── train.py            <- Code to train models
     │
     └── plots.py                <- Code to create visualizations
@@ -66,5 +66,5 @@ The goal is to impute STR (Short Tandem Repeats) data from SNP (Single Nucleotid
 качаем файлы
 gdown https://drive.google.com/uc?id=1t5mAz9s6xu40J7_QUSnBqcLmCX-T8L56 -O data/raw/data.zip
 
-разархивируем 
+разархивируем
 unzip data/raw/data.zip -d data/raw/

@@ -1,29 +1,33 @@
-import os
-import yaml
-import pandas as pd
-import numpy as np
 import argparse
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
-from xgboost import XGBRegressor
+import os
+
+import numpy as np
+import pandas as pd
+import yaml
 from catboost import CatBoostRegressor
 from scipy.stats import mstats
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.model_selection import train_test_split
 from tqdm import tqdm
+from xgboost import XGBRegressor
+
 
 def load_config(config_path):
-    with open(config_path, 'r') as file:
+    with open(config_path) as file:
         config = yaml.safe_load(file)
     return config
 
+
 def load_data(snp_file, str_file):
-    X = pd.read_csv(snp_file, index_col='animal_id')
-    y = pd.read_csv(str_file, index_col='animal_id').dropna(axis=0, how='any')
+    X = pd.read_csv(snp_file, index_col="animal_id")
+    y = pd.read_csv(str_file, index_col="animal_id").dropna(axis=0, how="any")
 
     common_ids = X.index.intersection(y.index)
     X = X.loc[common_ids]
     y = y.loc[common_ids]
-    
+
     return X, y
+
 
 # Методы обработки выбросов
 def handle_outliers(df, col, method):
@@ -57,10 +61,11 @@ def handle_outliers(df, col, method):
     else:
         return df  # Если метод "none", просто возвращаем исходный df
 
+
 def train_model(config):
-    X, y = load_data(config['data']['snp_file'], config['data']['str_file'])
-    outlier_methods = config['outliers']['methods']
-    model_type = config['model']['type']
+    X, y = load_data(config["data"]["snp_file"], config["data"]["str_file"])
+    outlier_methods = config["outliers"]["methods"]
+    model_type = config["model"]["type"]
 
     for method in outlier_methods:
         results = []
@@ -78,27 +83,31 @@ def train_model(config):
             y_cleaned = combined_cleaned[target]
 
             if len(y_cleaned.unique()) == 1:
-                print(f'Skipping {target} due to all equal targets after processing with {method}.')
+                print(
+                    f"Skipping {target} due to all equal targets after processing with {method}."
+                )
                 continue
 
-            X_train, X_val, y_train, y_val = train_test_split(X_cleaned, y_cleaned, test_size=0.2, random_state=42)
+            X_train, X_val, y_train, y_val = train_test_split(
+                X_cleaned, y_cleaned, test_size=0.2, random_state=42
+            )
 
             # Выбор модели
             if model_type == "CatBoost":
                 model = CatBoostRegressor(
-                    iterations=config['model']['iterations'],
-                    depth=config['model']['depth'],
-                    learning_rate=config['model']['learning_rate'],
-                    verbose=config['model']['verbose'],
-                    task_type='GPU'
+                    iterations=config["model"]["iterations"],
+                    depth=config["model"]["depth"],
+                    learning_rate=config["model"]["learning_rate"],
+                    verbose=config["model"]["verbose"],
+                    task_type="GPU",
                 )
             elif model_type == "XGBoost":
                 model = XGBRegressor(
-                    n_estimators=config['model']['iterations'],
-                    max_depth=config['model']['depth'],
-                    learning_rate=config['model']['learning_rate'],
-                    tree_method='hist',
-                    device='cuda' 
+                    n_estimators=config["model"]["iterations"],
+                    max_depth=config["model"]["depth"],
+                    learning_rate=config["model"]["learning_rate"],
+                    tree_method="hist",
+                    device="cuda",
                 )
             else:
                 raise ValueError(f"Unknown model type: {model_type}")
@@ -109,37 +118,42 @@ def train_model(config):
             rmse = np.sqrt(mean_squared_error(y_val, y_pred))
             r2 = r2_score(y_val, y_pred)
 
-            results.append(f'{target:<20} | RMSE = {rmse:>8.4f} | R2 = {r2:>8.4f}')
+            results.append(f"{target:<20} | RMSE = {rmse:>8.4f} | R2 = {r2:>8.4f}")
             total_rmse += rmse
             total_r2 += r2
 
         # Логирование результатов
-        log_dir = config['logging']['output_dir']
-        log_file_prefix = config['logging']['log_file_prefix']
+        log_dir = config["logging"]["output_dir"]
+        log_file_prefix = config["logging"]["log_file_prefix"]
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)
 
         # Формирование имени выходного файла с указанием типа модели и метода обработки выбросов
-        output_file = os.path.join(log_dir, f"{log_file_prefix}_{model_type}_{method}.txt")
+        output_file = os.path.join(
+            log_dir, f"{log_file_prefix}_{model_type}_{method}.txt"
+        )
         avg_rmse = total_rmse / n_models
         avg_r2 = total_r2 / n_models
 
-        with open(output_file, 'w') as f:
+        with open(output_file, "w") as f:
             for result in results:
-                f.write(result + '\n')
-            f.write(f'\n**Average RMSE**: {avg_rmse:.4f}\n')
-            f.write(f'**Average R2**: {avg_r2:.4f}\n')
+                f.write(result + "\n")
+            f.write(f"\n**Average RMSE**: {avg_rmse:.4f}\n")
+            f.write(f"**Average R2**: {avg_r2:.4f}\n")
 
-        print(f'\nResults saved to {output_file}')
-        print(f'Average RMSE: {avg_rmse:.4f}, Average R2: {avg_r2:.4f}')
+        print(f"\nResults saved to {output_file}")
+        print(f"Average RMSE: {avg_rmse:.4f}, Average R2: {avg_r2:.4f}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # Используем argparse для получения пути к конфигурационному файлу
-    parser = argparse.ArgumentParser(description='Train model with specified configuration.')
-    parser.add_argument('config_path', type=str, help='Path to the configuration file.')
+    parser = argparse.ArgumentParser(
+        description="Train model with specified configuration."
+    )
+    parser.add_argument("config_path", type=str, help="Path to the configuration file.")
 
     args = parser.parse_args()
 
     config = load_config(args.config_path)
     train_model(config)
-    print('Training complete.')
+    print("Training complete.")
