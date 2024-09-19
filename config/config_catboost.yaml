@@ -1,0 +1,26 @@
+# Конфигурация модели
+model:
+  type: "CatBoost"                 # Тип модели: CatBoost или XGBoost
+  iterations: 100                  # Количество итераций
+  depth: 6                         # Глубина деревьев
+  learning_rate: 0.1               # Скорость обучения
+  verbose: 0                       # Логирование
+
+# Методы обработки выбросов (список методов)
+outliers:
+  methods:                         # Методы обработки выбросов: none, simple, winsorization, iterative, zscore
+    - none
+    - simple
+    - winsorization
+    - iterative
+    - zscore
+
+# Пути данных
+data:
+  snp_file: "data/processed/snp_pivot.csv"
+  str_file: "data/processed/str_pivot.csv"
+
+# Логирование
+logging:
+  output_dir: "results"            # Директория для хранения результатов
+  log_file_prefix: "results"       # Префикс для файлов с результатами

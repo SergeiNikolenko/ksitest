@@ -1,0 +1,27 @@
+Allele1_BM1818       | RMSE =   3.1472 | R2 =   0.1569
+Allele1_BM1824       | RMSE =   5.0425 | R2 =   0.3294
+Allele1_BM2113       | RMSE =   3.6431 | R2 =   0.4946
+Allele1_ETH10        | RMSE =   1.5383 | R2 =   0.8733
+Allele1_ETH225       | RMSE =   2.0409 | R2 =   0.6264
+Allele1_ETH3         | RMSE =   1.9532 | R2 =   0.8531
+Allele1_INRA023      | RMSE =   5.7076 | R2 =   0.2969
+Allele1_SPS115       | RMSE =   0.8085 | R2 =   0.6542
+Allele1_TGLA122      | RMSE =   3.0051 | R2 =   0.8992
+Allele1_TGLA126      | RMSE =   0.6041 | R2 =   0.6825
+Allele1_TGLA227      | RMSE =   2.6917 | R2 =   0.5542
+Allele1_TGLA53       | RMSE =   2.9399 | R2 =   0.7859
+Allele2_BM1818       | RMSE =   0.7705 | R2 =   0.7974
+Allele2_BM1824       | RMSE =   1.1653 | R2 =   0.9037
+Allele2_BM2113       | RMSE =   3.0837 | R2 =   0.6250
+Allele2_ETH10        | RMSE =   1.2262 | R2 =   0.8527
+Allele2_ETH225       | RMSE =   0.9216 | R2 =   0.6164
+Allele2_ETH3         | RMSE =   1.6366 | R2 =   0.8592
+Allele2_INRA023      | RMSE =   1.5475 | R2 =   0.8151
+Allele2_SPS115       | RMSE =   1.8066 | R2 =   0.7396
+Allele2_TGLA122      | RMSE =   4.6275 | R2 =   0.8753
+Allele2_TGLA126      | RMSE =   0.8350 | R2 =   0.8302
+Allele2_TGLA227      | RMSE =   3.1407 | R2 =   0.5452
+Allele2_TGLA53       | RMSE =   4.1297 | R2 =   0.8441
+
+**Average RMSE**: 2.4172
+**Average R2**: 0.6879

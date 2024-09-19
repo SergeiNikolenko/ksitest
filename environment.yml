@@ -1,0 +1,24 @@
+name: ksitest
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - black
+  - flake8
+  - isort
+  - pip
+  - gdown
+  - uv
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - ipykernel
+  - sklearn
+  - catboost
+  - xgboost
+  - optuna
+  - pip:
+    - python-dotenv
+    - mkdocs
+    - -e .

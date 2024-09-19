@@ -1,0 +1,53 @@
+# Optuna Results (CatBoost) (2024-09-18 22:59:48)
+
+Allele1_BM1818       | RMSE = 3.077 | Params: {'outlier_method': 'simple', 'iterations': 120, 'depth': 8, 'learning_rate': 0.16422488025380613, 'l2_leaf_reg': 9.221437517821395, 'random_strength': 0.048710898807900714}
+Allele1_BM1824       | RMSE = 4.915 | Params: {'outlier_method': 'zscore', 'iterations': 117, 'depth': 9, 'learning_rate': 0.024487968343540837, 'l2_leaf_reg': 0.023550816703151012, 'random_strength': 0.7153213035700776}
+Allele1_BM2113       | RMSE = 3.563 | Params: {'outlier_method': 'zscore', 'iterations': 147, 'depth': 7, 'learning_rate': 0.16175618963371796, 'l2_leaf_reg': 0.7613360022362747, 'random_strength': 0.10107758236852624}
+Allele1_ETH10        | RMSE = 1.510 | Params: {'outlier_method': 'simple', 'iterations': 55, 'depth': 8, 'learning_rate': 0.1649232550815361, 'l2_leaf_reg': 0.06528996373395606, 'random_strength': 4.298868639460837}
+Allele1_ETH225       | RMSE = 1.932 | Params: {'outlier_method': 'none', 'iterations': 118, 'depth': 9, 'learning_rate': 0.04201957360515077, 'l2_leaf_reg': 0.009705110169288916, 'random_strength': 0.0015728530892987896}
+Allele1_ETH3         | RMSE = 1.842 | Params: {'outlier_method': 'zscore', 'iterations': 119, 'depth': 4, 'learning_rate': 0.07101744180136306, 'l2_leaf_reg': 0.5244359956331414, 'random_strength': 0.7007465777656487}
+Allele1_INRA023      | RMSE = 5.517 | Params: {'outlier_method': 'zscore', 'iterations': 127, 'depth': 9, 'learning_rate': 0.039795518896156845, 'l2_leaf_reg': 0.07427507748005198, 'random_strength': 0.1587894828994331}
+Allele1_SPS115       | RMSE = 0.608 | Params: {'outlier_method': 'zscore', 'iterations': 200, 'depth': 10, 'learning_rate': 0.015406397617974021, 'l2_leaf_reg': 0.03393706917603741, 'random_strength': 7.010995929079876}
+Allele1_TGLA122      | RMSE = 2.820 | Params: {'outlier_method': 'none', 'iterations': 182, 'depth': 10, 'learning_rate': 0.02640067904384249, 'l2_leaf_reg': 0.4689680074895856, 'random_strength': 0.019807770594959185}
+Allele1_TGLA126      | RMSE = 0.922 | Params: {'outlier_method': 'none', 'iterations': 132, 'depth': 6, 'learning_rate': 0.0019689797478286263, 'l2_leaf_reg': 0.09089671620416893, 'random_strength': 4.67705629986615}
+Allele1_TGLA227      | RMSE = 3.034 | Params: {'outlier_method': 'none', 'iterations': 200, 'depth': 7, 'learning_rate': 0.0045563493649501755, 'l2_leaf_reg': 0.5063409211466798, 'random_strength': 0.0016939587241936527}
+Allele1_TGLA53       | RMSE = 2.810 | Params: {'outlier_method': 'none', 'iterations': 51, 'depth': 10, 'learning_rate': 0.20050084705516846, 'l2_leaf_reg': 0.16179474488257342, 'random_strength': 0.001520963735004831}
+Allele2_BM1818       | RMSE = 0.742 | Params: {'outlier_method': 'none', 'iterations': 150, 'depth': 8, 'learning_rate': 0.03980046936726424, 'l2_leaf_reg': 0.00865001463853097, 'random_strength': 0.001013134248544819}
+Allele2_BM1824       | RMSE = 1.169 | Params: {'outlier_method': 'zscore', 'iterations': 162, 'depth': 7, 'learning_rate': 0.13717003645292256, 'l2_leaf_reg': 0.022688980140887525, 'random_strength': 0.016066541379804226}
+Allele2_BM2113       | RMSE = 3.077 | Params: {'outlier_method': 'none', 'iterations': 184, 'depth': 7, 'learning_rate': 0.08107558923052313, 'l2_leaf_reg': 3.1631754056744845, 'random_strength': 1.7359155259890522}
+Allele2_ETH10        | RMSE = 1.202 | Params: {'outlier_method': 'winsorization', 'iterations': 131, 'depth': 9, 'learning_rate': 0.08513885576323495, 'l2_leaf_reg': 0.0015633228907553488, 'random_strength': 0.029729447790687834}
+Allele2_ETH225       | RMSE = 0.879 | Params: {'outlier_method': 'none', 'iterations': 164, 'depth': 9, 'learning_rate': 0.15495266423141935, 'l2_leaf_reg': 1.8522690167764546, 'random_strength': 0.0101933320272361}
+Allele2_ETH3         | RMSE = 1.716 | Params: {'outlier_method': 'none', 'iterations': 101, 'depth': 4, 'learning_rate': 0.028219827219709243, 'l2_leaf_reg': 0.3695279192679634, 'random_strength': 0.07727554934776135}
+Allele2_INRA023      | RMSE = 1.474 | Params: {'outlier_method': 'winsorization', 'iterations': 181, 'depth': 8, 'learning_rate': 0.04536278260532803, 'l2_leaf_reg': 0.3330251740824239, 'random_strength': 0.13753627520040687}
+Allele2_SPS115       | RMSE = 2.068 | Params: {'outlier_method': 'none', 'iterations': 199, 'depth': 4, 'learning_rate': 0.022627961595198347, 'l2_leaf_reg': 2.1386339673610175, 'random_strength': 1.8891110733975687}
+Allele2_TGLA122      | RMSE = 4.462 | Params: {'outlier_method': 'none', 'iterations': 105, 'depth': 7, 'learning_rate': 0.0730714412654092, 'l2_leaf_reg': 0.005679782375929196, 'random_strength': 0.07724122072894136}
+Allele2_TGLA126      | RMSE = 1.464 | Params: {'outlier_method': 'winsorization', 'iterations': 59, 'depth': 10, 'learning_rate': 0.007901999309313458, 'l2_leaf_reg': 0.6357593497662819, 'random_strength': 0.002229620467345437}
+Allele2_TGLA227      | RMSE = 2.934 | Params: {'outlier_method': 'zscore', 'iterations': 197, 'depth': 8, 'learning_rate': 0.02463801866956944, 'l2_leaf_reg': 0.6631882684395358, 'random_strength': 0.15333456324731348}
+Allele2_TGLA53       | RMSE = 4.206 | Params: {'outlier_method': 'zscore', 'iterations': 114, 'depth': 5, 'learning_rate': 0.06942960422432047, 'l2_leaf_reg': 1.0460754990683474, 'random_strength': 0.8149636541294827}
+# Summary
+- Allele1_BM1818       | RMSE = 3.077
+- Allele1_BM1824       | RMSE = 4.915
+- Allele1_BM2113       | RMSE = 3.563
+- Allele1_ETH10        | RMSE = 1.510
+- Allele1_ETH225       | RMSE = 1.932
+- Allele1_ETH3         | RMSE = 1.842
+- Allele1_INRA023      | RMSE = 5.517
+- Allele1_SPS115       | RMSE = 0.608
+- Allele1_TGLA122      | RMSE = 2.820
+- Allele1_TGLA126      | RMSE = 0.922
+- Allele1_TGLA227      | RMSE = 3.034
+- Allele1_TGLA53       | RMSE = 2.810
+- Allele2_BM1818       | RMSE = 0.742
+- Allele2_BM1824       | RMSE = 1.169
+- Allele2_BM2113       | RMSE = 3.077
+- Allele2_ETH10        | RMSE = 1.202
+- Allele2_ETH225       | RMSE = 0.879
+- Allele2_ETH3         | RMSE = 1.716
+- Allele2_INRA023      | RMSE = 1.474
+- Allele2_SPS115       | RMSE = 2.068
+- Allele2_TGLA122      | RMSE = 4.462
+- Allele2_TGLA126      | RMSE = 1.464
+- Allele2_TGLA227      | RMSE = 2.934
+- Allele2_TGLA53       | RMSE = 4.206
+
+**Average RMSE**: 2.414
