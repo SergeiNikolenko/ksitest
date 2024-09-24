@@ -1,53 +1,19 @@
-# Optuna Results (XGBoost) (2024-09-18 23:05:47)
-
-Allele1_BM1818       | RMSE = 3.092 | Params: {'outlier_method': 'none', 'n_estimators': 130, 'max_depth': 8, 'learning_rate': 0.012309029791608096, 'reg_lambda': 0.030464436316239147, 'reg_alpha': 0.007487538491288001}
-Allele1_BM1824       | RMSE = 4.898 | Params: {'outlier_method': 'simple', 'n_estimators': 195, 'max_depth': 3, 'learning_rate': 0.048221795584618504, 'reg_lambda': 0.0018130243290633943, 'reg_alpha': 0.06353849633446841}
-Allele1_BM2113       | RMSE = 3.554 | Params: {'outlier_method': 'simple', 'n_estimators': 187, 'max_depth': 6, 'learning_rate': 0.15724256188919417, 'reg_lambda': 0.22303215498893597, 'reg_alpha': 0.14961883243386048}
-Allele1_ETH10        | RMSE = 1.450 | Params: {'outlier_method': 'none', 'n_estimators': 198, 'max_depth': 6, 'learning_rate': 0.06287361769625585, 'reg_lambda': 1.371571168339395, 'reg_alpha': 0.7524004415238387}
-Allele1_ETH225       | RMSE = 1.891 | Params: {'outlier_method': 'simple', 'n_estimators': 192, 'max_depth': 9, 'learning_rate': 0.028368250375306978, 'reg_lambda': 8.4341459448186, 'reg_alpha': 0.00014292605315422617}
-Allele1_ETH3         | RMSE = 1.883 | Params: {'outlier_method': 'none', 'n_estimators': 132, 'max_depth': 6, 'learning_rate': 0.04685784655951769, 'reg_lambda': 0.0012854464243447503, 'reg_alpha': 0.9044795286024052}
-Allele1_INRA023      | RMSE = 5.550 | Params: {'outlier_method': 'simple', 'n_estimators': 167, 'max_depth': 3, 'learning_rate': 0.016794707313192173, 'reg_lambda': 0.00014087766943623922, 'reg_alpha': 2.241580671737718}
-Allele1_SPS115       | RMSE = 0.610 | Params: {'outlier_method': 'zscore', 'n_estimators': 196, 'max_depth': 3, 'learning_rate': 0.27756886266626135, 'reg_lambda': 0.007353649208346586, 'reg_alpha': 9.516326257273212}
-Allele1_TGLA122      | RMSE = 2.764 | Params: {'outlier_method': 'winsorization', 'n_estimators': 142, 'max_depth': 10, 'learning_rate': 0.04623974562188651, 'reg_lambda': 6.9777085078471535, 'reg_alpha': 0.07203399602096196}
-Allele1_TGLA126      | RMSE = 0.528 | Params: {'outlier_method': 'zscore', 'n_estimators': 143, 'max_depth': 8, 'learning_rate': 0.014429974245693386, 'reg_lambda': 0.4702094257313744, 'reg_alpha': 0.7980954633069837}
-Allele1_TGLA227      | RMSE = 2.644 | Params: {'outlier_method': 'none', 'n_estimators': 168, 'max_depth': 9, 'learning_rate': 0.05633345644590597, 'reg_lambda': 0.007172275003143155, 'reg_alpha': 2.0579836109970877}
-Allele1_TGLA53       | RMSE = 2.891 | Params: {'outlier_method': 'none', 'n_estimators': 167, 'max_depth': 7, 'learning_rate': 0.07162448423404841, 'reg_lambda': 2.052511412081493, 'reg_alpha': 0.00018403768256576326}
-Allele2_BM1818       | RMSE = 0.794 | Params: {'outlier_method': 'winsorization', 'n_estimators': 112, 'max_depth': 5, 'learning_rate': 0.23446855545495476, 'reg_lambda': 0.06988115149255007, 'reg_alpha': 2.1238934285162707}
-Allele2_BM1824       | RMSE = 1.167 | Params: {'outlier_method': 'zscore', 'n_estimators': 156, 'max_depth': 3, 'learning_rate': 0.06218009734112398, 'reg_lambda': 5.689294272494128, 'reg_alpha': 0.020076737939846517}
-Allele2_BM2113       | RMSE = 3.016 | Params: {'outlier_method': 'zscore', 'n_estimators': 55, 'max_depth': 4, 'learning_rate': 0.2091905229663811, 'reg_lambda': 0.18394498058615494, 'reg_alpha': 4.791164898382227}
-Allele2_ETH10        | RMSE = 1.232 | Params: {'outlier_method': 'none', 'n_estimators': 137, 'max_depth': 6, 'learning_rate': 0.16160241030526956, 'reg_lambda': 0.00027080329631647696, 'reg_alpha': 0.0011491537594141628}
-Allele2_ETH225       | RMSE = 0.885 | Params: {'outlier_method': 'none', 'n_estimators': 74, 'max_depth': 5, 'learning_rate': 0.13546923828736943, 'reg_lambda': 1.0522281848262283, 'reg_alpha': 2.4377602848602775}
-Allele2_ETH3         | RMSE = 1.573 | Params: {'outlier_method': 'zscore', 'n_estimators': 107, 'max_depth': 4, 'learning_rate': 0.02958364256869758, 'reg_lambda': 0.04533812532965792, 'reg_alpha': 0.009789191833770798}
-Allele2_INRA023      | RMSE = 1.546 | Params: {'outlier_method': 'winsorization', 'n_estimators': 156, 'max_depth': 4, 'learning_rate': 0.19580878161834256, 'reg_lambda': 0.5717957975048311, 'reg_alpha': 0.00030720907309763875}
-Allele2_SPS115       | RMSE = 1.558 | Params: {'outlier_method': 'zscore', 'n_estimators': 92, 'max_depth': 8, 'learning_rate': 0.031865827552066454, 'reg_lambda': 0.08341700226520703, 'reg_alpha': 0.003235241456060246}
-Allele2_TGLA122      | RMSE = 4.698 | Params: {'outlier_method': 'none', 'n_estimators': 168, 'max_depth': 5, 'learning_rate': 0.019998653150090175, 'reg_lambda': 0.012951375696710466, 'reg_alpha': 6.209324189817917}
-Allele2_TGLA126      | RMSE = 0.905 | Params: {'outlier_method': 'none', 'n_estimators': 95, 'max_depth': 8, 'learning_rate': 0.25230251752861754, 'reg_lambda': 1.2174722730622136, 'reg_alpha': 0.10858098912844175}
-Allele2_TGLA227      | RMSE = 4.291 | Params: {'outlier_method': 'zscore', 'n_estimators': 75, 'max_depth': 6, 'learning_rate': 0.0023958765237340343, 'reg_lambda': 0.16554352145688822, 'reg_alpha': 1.785681252437238}
-Allele2_TGLA53       | RMSE = 4.104 | Params: {'outlier_method': 'simple', 'n_estimators': 176, 'max_depth': 9, 'learning_rate': 0.17101339938142485, 'reg_lambda': 1.3575439914891057, 'reg_alpha': 0.0020265927051002774}
-# Summary
-- Allele1_BM1818       | RMSE = 3.092
-- Allele1_BM1824       | RMSE = 4.898
-- Allele1_BM2113       | RMSE = 3.554
-- Allele1_ETH10        | RMSE = 1.450
-- Allele1_ETH225       | RMSE = 1.891
-- Allele1_ETH3         | RMSE = 1.883
-- Allele1_INRA023      | RMSE = 5.550
-- Allele1_SPS115       | RMSE = 0.610
-- Allele1_TGLA122      | RMSE = 2.764
-- Allele1_TGLA126      | RMSE = 0.528
-- Allele1_TGLA227      | RMSE = 2.644
-- Allele1_TGLA53       | RMSE = 2.891
-- Allele2_BM1818       | RMSE = 0.794
-- Allele2_BM1824       | RMSE = 1.167
-- Allele2_BM2113       | RMSE = 3.016
-- Allele2_ETH10        | RMSE = 1.232
-- Allele2_ETH225       | RMSE = 0.885
-- Allele2_ETH3         | RMSE = 1.573
-- Allele2_INRA023      | RMSE = 1.546
-- Allele2_SPS115       | RMSE = 1.558
-- Allele2_TGLA122      | RMSE = 4.698
-- Allele2_TGLA126      | RMSE = 0.905
-- Allele2_TGLA227      | RMSE = 4.291
-- Allele2_TGLA53       | RMSE = 4.104
-
-**Average RMSE**: 2.397
+Trial 0: RMSE = 1.849765546330498, Params = {'iterations': 98, 'depth': 4, 'learning_rate': 0.4321689780131532}
+Trial 1: RMSE = 1.7315097513088304, Params = {'iterations': 366, 'depth': 10, 'learning_rate': 0.01603577328258156}
+Trial 2: RMSE = 1.7121603978489368, Params = {'iterations': 406, 'depth': 9, 'learning_rate': 0.08359564727866385}
+Trial 3: RMSE = 1.7804923939380437, Params = {'iterations': 233, 'depth': 4, 'learning_rate': 0.2758940134873735}
+Trial 4: RMSE = 1.8018985614215974, Params = {'iterations': 334, 'depth': 4, 'learning_rate': 0.2954550992460326}
+Trial 5: RMSE = 1.7123029862030215, Params = {'iterations': 276, 'depth': 4, 'learning_rate': 0.07782223377577499}
+Trial 6: RMSE = 1.6695623116033398, Params = {'iterations': 363, 'depth': 6, 'learning_rate': 0.030906750776152573}
+Trial 7: RMSE = 1.8253143883306207, Params = {'iterations': 256, 'depth': 4, 'learning_rate': 0.3503910380214704}
+Trial 8: RMSE = 1.6808853052826482, Params = {'iterations': 429, 'depth': 5, 'learning_rate': 0.0387181346966712}
+Trial 9: RMSE = 1.67375621497108, Params = {'iterations': 421, 'depth': 7, 'learning_rate': 0.05179334056952038}
+Trial 10: RMSE = 1.6718159950356064, Params = {'iterations': 487, 'depth': 7, 'learning_rate': 0.011100149919838563}
+Trial 11: RMSE = 1.67127692700491, Params = {'iterations': 498, 'depth': 7, 'learning_rate': 0.010768228581535552}
+Trial 12: RMSE = 1.668915425798309, Params = {'iterations': 498, 'depth': 6, 'learning_rate': 0.026341926914594783}
+Trial 13: RMSE = 1.680799918289729, Params = {'iterations': 154, 'depth': 6, 'learning_rate': 0.024772928063139098}
+Trial 14: RMSE = 1.6701531211824765, Params = {'iterations': 321, 'depth': 6, 'learning_rate': 0.027364142248725732}
+Trial 15: RMSE = 1.7201318148706892, Params = {'iterations': 452, 'depth': 8, 'learning_rate': 0.17750812721709117}
+Trial 16: RMSE = 1.6979245894134667, Params = {'iterations': 197, 'depth': 5, 'learning_rate': 0.12300141536245572}
+Trial 17: RMSE = 1.6925946738263635, Params = {'iterations': 372, 'depth': 8, 'learning_rate': 0.02212465888900564}
+Trial 18: RMSE = 1.7526967509504472, Params = {'iterations': 320, 'depth': 3, 'learning_rate': 0.043904861702115223}

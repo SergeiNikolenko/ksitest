@@ -1,19 +1,15 @@
 # Конфигурация модели
 model:
-  type: "XGBoost"                 # Тип модели: CatBoost или XGBoost
-  iterations: 100                  # Количество итераций
+  type: "XGBoost"                  # Тип модели: CatBoost или XGBoost
+  iterations: 500                  # Количество итераций
   depth: 6                         # Глубина деревьев
-  learning_rate: 0.1               # Скорость обучения
+  learning_rate: 0.025             # Скорость обучения
   verbose: 0                       # Логирование
 
 # Методы обработки выбросов (список методов)
 outliers:
   methods:                         # Методы обработки выбросов: none, simple, winsorization, iterative, zscore
-    - none
-    - simple
     - winsorization
-    - iterative
-    - zscore
 
 # Пути данных
 data:

@@ -11,18 +11,12 @@ train_xgboost:
 	python ksitest/train_model.py config/config_xgboost.yaml
 
 
-# SHAPEIT, BEAGLE, IMPUTE2
+optimize_all:
+	make optimize_catboost
+	make optimize_xgboost
 
-run_shapeit:
-	python ksitest/shapeit/run_shapeit.py
+optimize_catboost:
+	python ksitest/optuna_hyperparameter_optimization.py config/config_catboost.yaml
 
-run_beagle:
-	python ksitest/shapeit/run_beagle.py
-
-run_impute2:
-	python ksitest/shapeit/run_impute2.py
-
-run_all:
-	make run_shapeit
-	make run_beagle
-	make run_impute2
+optimize_xgboost:
+	python ksitest/optuna_hyperparameter_optimization.py config/config_xgboost.yaml
