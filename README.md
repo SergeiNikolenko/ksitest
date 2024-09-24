@@ -1,70 +1,185 @@
-# ksitest
+# Ksitest: Импутация STR данных на основе SNP
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+## Описание задачи
 
-The goal is to impute STR (Short Tandem Repeats) data from SNP (Single Nucleotide Polymorphisms) data for Holstein cows, which is critical in verifying the genetic relationship between animals for livestock selection.
+Цель проекта — разработать модель для импутации данных STR (Short Tandem Repeats) на основе SNP (Single Nucleotide Polymorphisms) данных для коров Голштинской породы. Это важно для подтверждения родословной животных в животноводстве, что способствует улучшению селекционных программ.
 
-## Project Organization
+## Структура проекта
 
 ```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
+├── Makefile                <- Команды для запуска скриптов
+├── README.md               <- Описание проекта
+├── config                  <- Конфигурационные файлы для моделей
+│   ├── config_catboost.yaml
+│   └── config_xgboost.yaml
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for
-│                         ksitest and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── ksitest   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes ksitest a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling
-    │   ├── __init__.py
-    │   ├── predict.py          <- Code to run model inference with trained models
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
+│   ├── processed           <- Обработанные данные
+│   │   ├── snp_pivot.csv
+│   │   ├── str_pivot.csv
+│   │   └── STR_test_imputed.csv
+│   └── raw                 <- Сырые данные
+│       ├── data.zip
+│       ├── FinalReport.csv
+│       ├── snp_map_file.csv
+│       ├── STR_test.csv
+│       └── STR_train.csv
+├── docs                    <- Документация
+│   ├── README.md
+│   └── Тестовое задание.pdf
+├── environment.yml         <- Описание окружения для conda
+├── ksitest                 <- Исходный код проекта
+│   ├── __init__.py
+│   ├── impute.ipynb
+│   ├── impute_str.py       <- Скрипт для импутации STR данных
+│   ├── optuna_hyperparameter_optimization.py
+│   ├── prepare
+│   │   └── preprocess.py   <- Скрипт для предобработки данных
+│   └── train_model.py      <- Скрипт для обучения моделей
+├── models                  <- Сохраненные модели
+│   ├── catboost            <- Модели CatBoost
+│   └── xgboost             <- Модели XGBoost
+├── notebooks
+│   └── EDA.ipynb           <- Ноутбук с разведочным анализом данных
+├── pyproject.toml          <- Конфигурация проекта
+├── results                 <- Результаты экспериментов
+│   ├── catboost
+│   │   ├── optuna_results_catboost.txt
+│   │   ├── results_CatBoost_iterative.txt
+│   │   ├── results_CatBoost_none.txt
+│   │   ├── results_CatBoost_simple.txt
+│   │   ├── results_CatBoost_winsorization.txt
+│   │   └── results_CatBoost_zscore.txt
+│   ├── optuna_test
+│   │   ├── optuna_results_catboost.txt
+│   │   └── optuna_results_xgboost.txt
+│   └── xgboost
+│       ├── optuna_results_xgboost.txt
+│       ├── results_XGBoost_iterative.txt
+│       ├── results_XGBoost_none.txt
+│       ├── results_XGBoost_simple.txt
+│       ├── results_XGBoost_winsorization.txt
+│       └── results_XGBoost_zscore.txt
+├── setup.cfg               <- Конфигурация для инструментов кодирования
+└── tests                   <- Тесты для проверки кода (если применимо)
 ```
 
---------
+## Установка окружения
 
-установить окружение mamba env create -f environment.yml
+1. **Установка окружения:**
 
-активируем conda activate ksitest
+   ```bash
+   mamba env create -f environment.yml
+   conda activate ksitest
+   ```
 
-качаем файлы
-gdown https://drive.google.com/uc?id=1t5mAz9s6xu40J7_QUSnBqcLmCX-T8L56 -O data/raw/data.zip
+2. **Загрузка данных:**
 
-разархивируем
-unzip data/raw/data.zip -d data/raw/
+   ```bash
+   gdown https://drive.google.com/uc?id=1t5mAz9s6xu40J7_QUSnBqcLmCX-T8L56 -O data/raw/data.zip
+   unzip data/raw/data.zip -d data/raw/
+   ```
+
+## Подход к решению
+
+### Предобработка данных
+
+- **SNP данные:** Загружаются и преобразуются в формат `animal_id` x `SNP Name`, пропуски заполняются средними значениями.
+- **STR данные:** Преобразуются в формат `animal_id` x `STR Name`, удаляются выбросы (значения > 600).
+
+### Обучение моделей
+
+- Использовались модели **CatBoostRegressor** и **XGBRegressor**.
+- Применялись различные методы обработки выбросов:
+  - **None:** Без обработки выбросов.
+  - **Winsorization:** Ограничение экстремальных значений (обрезание 5% с каждой стороны).
+  - **Z-score:** Удаление значений за пределами 3 стандартных отклонений.
+
+### Импутация STR данных
+
+- Обученные модели использовались для предсказания отсутствующих STR аллелей в тестовом наборе.
+- Результаты сохранялись в `STR_test_imputed.csv`.
+
+## Результаты
+
+### Средние показатели моделей
+
+После обучения моделей с различными методами обработки выбросов были получены следующие средние значения RMSE и R²:
+
+#### Без обработки выбросов
+
+| Метод         | Средний RMSE | Средний R² |
+|---------------|--------------|------------|
+| **CatBoost**  | 2.4172       | 0.6879     |
+| **XGBoost**   | 2.6540       | 0.4087     |
+
+#### Применение Winsorization
+
+| Метод         | Средний RMSE | Средний R² |
+|---------------|--------------|------------|
+| **CatBoost**  | 1.6678       | 0.8211     |
+| **XGBoost**   | 1.6684       | 0.8203     |
+
+#### Применение Z-score
+
+| Метод         | Средний RMSE | Средний R² |
+|---------------|--------------|------------|
+| **CatBoost**  | 1.7641       | 0.7982     |
+| **XGBoost**   | 1.7461       | 0.8050     |
+
+### Анализ результатов
+
+- **Winsorization** показал наилучшие средние результаты по RMSE и R² для обоих алгоритмов.
+- **Z-score** также улучшил результаты по сравнению с обучением без обработки выбросов, но уступил Winsorization.
+- RMSE и R² варьируются в зависимости от выбранного метода обработки выбросов и алгоритма.
+
+## Выводы
+
+- **Обработка выбросов** значительно влияет на качество модели. Применение Winsorization привело к существенному снижению RMSE и увеличению R².
+- **Модели CatBoost и XGBoost** показали схожие результаты при использовании методов обработки выбросов.
+- **Вариабельность RMSE и R²** указывает на то, что разные аллели могут быть предсказаны с различной точностью.
+
+## Дальнейшие шаги
+
+1. **Ансамблирование моделей:** Можно попробовать объединить результаты разных моделей, таких как CatBoost и XGBoost, а также различных способов обработки выбросов. Это может улучшить общую точность предсказаний.
+
+2. **Тонкая настройка гиперпараметров:** Использование инструментов вроде Optuna поможет автоматически подобрать лучшие параметры для каждой модели, что повысит её производительность.
+
+
+4. **Использование нейросетей (DNN):** Применение глубоких нейронных сетей для моделирования более сложных зависимостей между SNP и STR может привести к более точным предсказаниям.
+
+6. **Генеративные модели:** Попробовать модели, которые могут восстанавливать недостающие данные, например, вариационные автоэнкодеры (VAE) или генеративно-состязательные сети (GAN).
+
+7. **Создание новых признаков:** Разработка дополнительных признаков или применение методов feature engineering для улучшения обучения моделей.
+
+8. **Аугментация данных:** Использовать техники увеличения данных, которые позволят моделям лучше обучаться на большем количестве информации.
+
+## Запуск проекта
+
+Теперь все шаги можно запустить одной командой `make all`, которая выполнит установку окружения, загрузку данных, предобработку, обучение моделей и импутацию STR:
+
+1. Полный процесс:
+
+   ```bash
+   make all
+   ```
+
+2. Для повторения экспериментов по шагам:
+
+   - **Предобработка данных:**
+
+     ```bash
+     make prepare_data
+     ```
+
+   - **Обучение моделей:**
+
+     ```bash
+     make train_catboost
+     make train_xgboost
+     ```
+
+   - **Импутация STR данных:**
+
+     ```bash
+     make impute_str
+     ```

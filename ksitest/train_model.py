@@ -66,6 +66,10 @@ def train_model(config):
     X, y = load_data(config["data"]["snp_file"], config["data"]["str_file"])
     outlier_methods = config["outliers"]["methods"]
     model_type = config["model"]["type"]
+    model_save_dir = config["model"]["save_dir"]
+
+    if not os.path.exists(model_save_dir):
+        os.makedirs(model_save_dir)
 
     for method in outlier_methods:
         results = []
@@ -101,6 +105,7 @@ def train_model(config):
                     verbose=config["model"]["verbose"],
                     task_type="GPU",
                 )
+                model_file = f"{model_save_dir}/{target}_CatBoost_{method}.cbm"
             elif model_type == "XGBoost":
                 model = XGBRegressor(
                     n_estimators=config["model"]["iterations"],
@@ -109,6 +114,7 @@ def train_model(config):
                     tree_method="hist",
                     device="cuda",
                 )
+                model_file = f"{model_save_dir}/{target}_XGBoost_{method}.json"
             else:
                 raise ValueError(f"Unknown model type: {model_type}")
 
@@ -117,6 +123,12 @@ def train_model(config):
 
             rmse = np.sqrt(mean_squared_error(y_val, y_pred))
             r2 = r2_score(y_val, y_pred)
+
+            # Сохранение модели
+            if model_type == "CatBoost":
+                model.save_model(model_file)
+            elif model_type == "XGBoost":
+                model.save_model(model_file)
 
             results.append(f"{target:<20} | RMSE = {rmse:>8.4f} | R2 = {r2:>8.4f}")
             total_rmse += rmse
