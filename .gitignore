@@ -1,8 +1,6 @@
 
 # Data
-/data/*
-!/data/processed/STR_test_imputed.csv
-
+/data/raw/
 # Mac OS-specific storage files
 .DS_Store
 
