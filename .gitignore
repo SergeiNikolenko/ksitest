@@ -1,6 +1,9 @@
 
 # Data
 /data/raw/
+/data/processed/snp_pivot.csv
+/data/processed/str_pivot.csv
+
 # Mac OS-specific storage files
 .DS_Store
 
